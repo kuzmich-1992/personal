@@ -4,7 +4,7 @@ class EntitiesController < ApplicationController
   before_action :load_entities
 
   def index
-    @entities = Entity.all
+    @entities = Entity.order('created_at DESC') 
   end
 
   def new

@@ -1,14 +1,17 @@
+
 <div class="card border-dark mb-3">
   <div class="card">
-    <div class="card-body" style="background-color: #CCFFCC;"> 
+    <div class="card-body" style="background-color: #CCFFCC;">
+    <li id="adpost-<%= entity.id %>">
       <div class="container">
-        <div class="row"> 
+        <div class="row">
         <div class="col-md">
           <p>name: <%= entity.name %></p>
           <p>parsed_url: <%= entity.parsed_url %></p>
           <p>parsed_info: <%= entity.parsed_info %></p>
         </div>
-      </div>
+        </div>
+    </li>
     </div>
   </div>
 </div>
