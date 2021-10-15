@@ -5,10 +5,12 @@
 <div class="jumbotron jumbotron-fluid" style="background-color: #FFFF99;">
   <%if user_signed_in?%>
     <div class="entity-form-group">
+      <h1>List of numbers</h1>
       <%= form_for Entity.new do |f| %>
-      <p><%= f.text_field :name, id:'parsed' %></p>
-      <p><%= f.submit "parse", class: "btn btn-primary", id: "submitadv"%></p>
-      <% end %>
+        <p><%= f.text_field :parsed_url, id:'url' %></p>
+        <p><%= f.file_field :name, id:'number_table' %></p>
+        <p><%= f.submit "Add ent", class: "btn btn-primary", id: "submitadv"%></p>
+      <%end%>
     </div>
   <%end%>
 </div>

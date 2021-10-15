@@ -12,18 +12,25 @@ class EntitiesController < ApplicationController
   end
 
   def create
-    @doc = Nokogiri::HTML(URI.open('https://axela-app.herokuapp.com/adposts/'))
-    @info = @doc.css('col-md', 'p').map do |link|
-      link.content
-    end
+    arr=[]
+    @parsed_url = permitted_parameters[:parsed_url]
+    @file = permitted_parameters[:name]
+    workbook = SimpleXlsxReader.open @file.tempfile.to_path.to_s
+    worksheets = workbook.sheets
+    worksheets.map{|el| arr.push(el.rows)}
+    binding.irb
+    # @doc = Nokogiri::HTML(URI.open('https://axela-app.herokuapp.com/adposts/'))
+    # @info = @doc.css('col-md', 'p').map do |link|
+    #   link.content
+    # end
 
-    @entity = Entity.new(permitted_parameters.merge!({:parsed_info => @info})
-                                             .merge({:parsed_url => 'https://axela-app.herokuapp.com/adposts/'}))
-    if @entity.save
-      redirect_to entities_path
-    else
-      render :new
-    end
+    # @entity = Entity.new(permitted_parameters.merge!({:parsed_info => @info})
+    #                                          .merge({:parsed_url => 'https://axela-app.herokuapp.com/adposts/'}))
+    # if @entity.save
+    #   redirect_to entities_path
+    # else
+    #   render :new
+    # end
   end
 
   protected
