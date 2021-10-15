@@ -4,4 +4,26 @@
   Creating a parse 
 </h1>
 
-<%= render partial: 'form' %>
+<div class="container" id='cont'>
+  <div class="row">
+    <div class="col-md-8">  
+      <%= render @entities %>
+    </div>
+  </div>
+</div>
+  
+<div class="col-md-4">
+  <div class="jumbotron jumbotron-fluid" style="background-color: #FFFF99;">
+    <%if user_signed_in?%>
+      <div class="container text-center">
+        <div class="adpost-form-group">
+          <%= form_for Entity.new do |f| %>
+            <p><%= f.text_field :parsed_url, id:'price' %></p>
+            <p><%= f.submit "parse", class: "btn btn-primary", id: "submitadv"%></p>
+          <% end %>
+        </div>
+      </div>
+    <%end%>
+  </div>
+</div>
+
