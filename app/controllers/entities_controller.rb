@@ -20,7 +20,6 @@ class EntitiesController < ApplicationController
     worksheets.map{|el| arr.push(el.rows)}
     @doc = Nokogiri::HTML(URI.open(@parsed_url))
     @info = @doc.css('col-md', 'p').map{|link| link.content}
-    binding.irb
     # @entity = Entity.new(permitted_parameters.merge!({:parsed_info => @info})
     #                                          .merge({:parsed_url => 'https://axela-app.herokuapp.com/adposts/'}))
     # if @entity.save
