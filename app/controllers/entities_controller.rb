@@ -14,7 +14,7 @@ class EntitiesController < ApplicationController
   def create
     arr=[]
     @parsed_url = permitted_parameters[:parsed_url]
-    @file = permitted_parameters[:name]
+    @file = permitted_parameters[:numbers]
     workbook = SimpleXlsxReader.open @file.tempfile.to_path.to_s
     worksheets = workbook.sheets
     worksheets.map{|el| arr.push(el.rows)}
@@ -41,7 +41,7 @@ class EntitiesController < ApplicationController
   end
 
   def permitted_parameters
-    params.require(:entity).permit(:name, :parsed_info, :parsed_url)
+    params.require(:entity).permit(:numbers, :parsed_info, :parsed_url)
   end
 end
 
