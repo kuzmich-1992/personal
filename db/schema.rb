@@ -15,13 +15,13 @@ ActiveRecord::Schema.define(version: 2021_10_14_204324) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "personal_parsers", force: :cascade do |t|
+  create_table "entities", force: :cascade do |t|
     t.string "name"
     t.string "parsed_url"
     t.string "parsed_info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_personal_parsers_on_name", unique: true
+    t.index ["name"], name: "index_entities_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|

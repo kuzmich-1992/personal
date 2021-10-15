@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root controller: :personal_parsers, action: :index
-  resources :personal_parsers
+  root controller: :entities, action: :index
+  resources :entities
   devise_for :users
 end
