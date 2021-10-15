@@ -2,7 +2,8 @@
 
 class EntitiesController < ApplicationController
   before_action :load_entities
-
+  respond_to :xlsx
+  
   def index
     @entities = Entity.order('created_at DESC') 
   end
@@ -20,14 +21,21 @@ class EntitiesController < ApplicationController
     worksheets.map{|el| arr.push(el.rows)}
     @doc = Nokogiri::HTML(URI.open(@parsed_url))
     @info = @doc.css('col-md', 'p').map{|link| link.content}
-    # @entity = Entity.new(permitted_parameters.merge!({:parsed_info => @info})
-    #                                          .merge({:parsed_url => 'https://axela-app.herokuapp.com/adposts/'}))
-    # if @entity.save
-    #   redirect_to entities_path
-    # else
-    #   render :new
-    # end
+    Axlsx::Package.new do |p|
+      p.workbook.add_worksheet(:name => "Pie Chart") do |sheet|
+        sheet.add_row [arr.first]
+      end
+      p.serialize('simple.xlsx')
+    end 
   end
+
+  # @entity = Entity.new(permitted_parameters.merge!({:parsed_info => @info})
+  #                                          .merge({:parsed_url => 'https://axela-app.herokuapp.com/adposts/'}))
+  # if @entity.save
+  #   redirect_to entities_path
+  # else
+  #   render :new
+  # end
 
   protected
 

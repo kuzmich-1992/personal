@@ -21,6 +21,10 @@ gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 gem 'simple_xlsx_reader'
 gem 'redis'
+gem 'rubyzip', '>= 1.2.1'
+gem 'axlsx', git: 'https://github.com/randym/axlsx.git', ref: 'c8ac844'
+gem 'axlsx_rails'
+gem "caxlsx"
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
