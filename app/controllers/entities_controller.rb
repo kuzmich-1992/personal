@@ -26,9 +26,10 @@ class EntitiesController < ApplicationController
         sheet.add_row [arr.first]
       end
       p.serialize('simple.xlsx')
+      send_file "#{Rails.root}/simple.xlsx", type: "application/xlsx", x_sendfile: true
     end 
   end
-
+  
   # @entity = Entity.new(permitted_parameters.merge!({:parsed_info => @info})
   #                                          .merge({:parsed_url => 'https://axela-app.herokuapp.com/adposts/'}))
   # if @entity.save
