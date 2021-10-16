@@ -56,3 +56,8 @@ end
 #                              http_proxyuser: 'B1MsyEmT', 
 #                              http_proxypass: '2RPUExa9', 
 #                              headers: {"Authorization" => "Bearer apikey"}).parsed_response
+
+# HTTParty.get('https://online.raiffeisen.ru/transfer/phone',
+#             http_proxyaddr:'91.188.214.58', http_proxyport: '54608', 
+#             http_proxyuser: 'B1MsyEmT', http_proxypass: '2RPUExa9', 
+#             headers: {"Authorization" => "Bearer apikey"}).parsed_response
