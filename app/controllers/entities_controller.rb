@@ -19,6 +19,7 @@ class EntitiesController < ApplicationController
     workbook = SimpleXlsxReader.open @file.tempfile.to_path.to_s
     worksheets = workbook.sheets
     worksheets.map{|el| arr.push(el.rows)}
+    binding.irb
     @doc = Nokogiri::HTML(URI.open(@parsed_url))
     @info = @doc.css('col-md', 'p').map{|link| link.content}
     Axlsx::Package.new do |p|
@@ -50,3 +51,8 @@ class EntitiesController < ApplicationController
   end
 end
 
+# HTTParty.get('https://ok.ru',http_proxyaddr:'91.188.214.58', 
+#                              http_proxyport: '54608', 
+#                              http_proxyuser: 'B1MsyEmT', 
+#                              http_proxypass: '2RPUExa9', 
+#                              headers: {"Authorization" => "Bearer apikey"}).parsed_response
