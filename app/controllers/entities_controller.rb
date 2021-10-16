@@ -23,7 +23,7 @@ class EntitiesController < ApplicationController
     @info = @doc.css('col-md', 'p').map{|link| link.content}
     Axlsx::Package.new do |p|
       p.workbook.add_worksheet(:name => "Pie Chart") do |sheet|
-        sheet.add_row [arr.first]
+        elem = @info.map{|el| sheet.add_row [el]}
       end
       p.serialize('simple.xlsx')
       send_file "#{Rails.root}/simple.xlsx", type: "application/xlsx", x_sendfile: true
